@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wordcloud app</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Wordcloud app">
+  <meta name="author" content="Bobby den Bezemer">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Wordcloud app</h1>
+    <h2>Making wordcloud from twitters tweets</h2>
+    <p>Bobby den Bezemer<br/>Knowledge management consultant</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Contents</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background to the App</li>
+<li>Functionality</li>
+<li>Functionality continued</li>
+<li>Future development</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Background to the app</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I recently had to do text analysis for work. To create a synergy between work and education, I incorporated this in the current app as well.</p>
+
+<p>Furthermore, I liked to mess around with some moderatly advanced shiny options like isolation and a reactive user interface. These two things led to the development of the current app.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Functionality</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In short the functionality of the app can be divided into three chunks:</p>
+
+<ol>
+<li>Retrieving possible twitter locations and their current trending tags</li>
+<li>Retrieving tweets based on the the location and trending tag selected by the user</li>
+<li>Processing the text of the tweets through the tm library</li>
+<li>Turning the text into a wordcloud</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Functionality continued</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>One advanced functionality in the current app is that the user interface is updated by the location as selected by the user.</p>
+
+<p>Because the location takes processing, we want to isolate the fetchTweets() function otherwise it already runs before the user has selected as tag.</p>
+
+<p>To run the word cloud, the user has to press the go button. This button will also update the fetched tweets if the user provides new input.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Future developments</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The following future developments are possible:</p>
+
+<ol>
+<li>I could update the locations specified by the user. For instance, I could use geocoding such that the location is more like an area</li>
+<li>I could create some tag networks as well. For instance, it may be interesting to see which words are strongly interrelated. See the next page for such a network.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Future developments</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(qgraph)
+m = matrix(data = c(1, 0.4, 0.2, 0.4, 1, 0.8, 0.2, 0.8, 1), nrow = 3, ncol = 3, byrow = TRUE)
+rownames(m) = c(&quot;Media&quot;, &quot;Politics&quot;, &quot;Elections&quot;)
+colnames(m) = c(&quot;Media&quot;, &quot;Politics&quot;, &quot;Elections&quot;)
+qgraph(m, labels = c(&quot;Media&quot;, &quot;Politics&quot;, &quot;Elections&quot;))
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Contents'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Background to the app'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Functionality'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Functionality continued'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Future developments'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Future developments'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
